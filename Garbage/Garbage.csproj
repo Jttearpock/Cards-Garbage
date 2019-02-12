@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="GameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +66,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ActiveGameState.cs" />
+    <Compile Include="Classes\Player.cs" />
+    <Compile Include="GameBoard.xaml.cs">
+      <DependentUpon>GameBoard.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -90,9 +99,71 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Clubs-Ace.png" />
+    <Resource Include="Images\Clubs-Eight.png" />
+    <Resource Include="Images\Clubs-Five.png" />
+    <Resource Include="Images\Clubs-Four.png" />
+    <Resource Include="Images\Clubs-Jack.png" />
+    <Resource Include="Images\Clubs-King.png" />
+    <Resource Include="Images\Clubs-Nine.png" />
+    <Resource Include="Images\Clubs-Queen.png" />
+    <Resource Include="Images\Clubs-Seven.png" />
+    <Resource Include="Images\Clubs-Six.png" />
+    <Resource Include="Images\Clubs-Ten.png" />
+    <Resource Include="Images\Clubs-Three.png" />
+    <Resource Include="Images\Clubs-Two.png" />
+    <Resource Include="Images\Diamonds-Ace.png" />
+    <Resource Include="Images\Diamonds-Eight.png" />
+    <Resource Include="Images\Diamonds-Five.png" />
+    <Resource Include="Images\Diamonds-Four.png" />
+    <Resource Include="Images\Diamonds-Jack.png" />
+    <Resource Include="Images\Diamonds-King.png" />
+    <Resource Include="Images\Diamonds-Nine.png" />
+    <Resource Include="Images\Diamonds-Queen.png" />
+    <Resource Include="Images\Diamonds-Seven.png" />
+    <Resource Include="Images\Diamonds-Six.png" />
+    <Resource Include="Images\Diamonds-Ten.png" />
+    <Resource Include="Images\Diamonds-Three.png" />
+    <Resource Include="Images\Diamonds-Two.png" />
+    <Resource Include="Images\Hearts-Ace.png" />
+    <Resource Include="Images\Hearts-Eight.png" />
+    <Resource Include="Images\Hearts-Five.png" />
+    <Resource Include="Images\Hearts-Four.png" />
+    <Resource Include="Images\Hearts-Jack.png" />
+    <Resource Include="Images\Hearts-King.png" />
+    <Resource Include="Images\Hearts-Nine.png" />
+    <Resource Include="Images\Hearts-Queen.png" />
+    <Resource Include="Images\Hearts-Seven.png" />
+    <Resource Include="Images\Hearts-Six.png" />
+    <Resource Include="Images\Hearts-Ten.png" />
+    <Resource Include="Images\Hearts-Three.png" />
+    <Resource Include="Images\Hearts-Two.png" />
+    <Resource Include="Images\Image Source.txt" />
+    <Resource Include="Images\Spades-Ace.png" />
+    <Resource Include="Images\Spades-Eight.png" />
+    <Resource Include="Images\Spades-Five.png" />
+    <Resource Include="Images\Spades-Four.png" />
+    <Resource Include="Images\Spades-Jack.png" />
+    <Resource Include="Images\Spades-King.png" />
+    <Resource Include="Images\Spades-Nine.png" />
+    <Resource Include="Images\Spades-Queen.png" />
+    <Resource Include="Images\Spades-Seven.png" />
+    <Resource Include="Images\Spades-Six.png" />
+    <Resource Include="Images\Spades-Ten.png" />
+    <Resource Include="Images\Spades-Three.png" />
+    <Resource Include="Images\Spades-Two.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BackSide_One_Edited.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Table_Top_Texture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
