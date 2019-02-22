@@ -45,16 +45,29 @@ namespace Garbage
         private string playerName;
 
         /// <summary>
+        /// The Player's name
+        /// </summary>
+        private bool isAi;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Player"/> class.
         /// </summary>
         /// <param name="numberOfCardsNeeded">The number of cards needed for the round</param>
         /// <param name="name">The name of the player</param>
-        public Player(int numberOfCardsNeeded, string name)
+        /// <param name="isAi">The name of the player</param> 
+        public Player(int numberOfCardsNeeded, string name, bool isAi)
         {
             this.numberOfCardsNeeded = numberOfCardsNeeded;
             this.scoreArray = new Image[numberOfCardsNeeded];
             this.completedRound = false;
             this.playerName = name;
+            this.cardsNeededArray = new string[this.numberOfCardsNeeded];
+            this.isAi = isAi;
+
+            for (int i = 0; i < this.numberOfCardsNeeded; i++)
+            {
+                this.CardsNeededArray[i] = this.cards[i];
+            }
         }
 
         /// <summary>
@@ -79,6 +92,14 @@ namespace Garbage
         public string PlayerName
         {
             get { return this.playerName; }
+        }
+
+        /// <summary>
+        /// Gets the Ai Value of the player
+        /// </summary>
+        public bool IsAi
+        {
+            get { return this.isAi; }
         }
 
         /// <summary>

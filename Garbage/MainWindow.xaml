@@ -11,13 +11,13 @@
         <Label x:Name="Lbl_Name" Content="By: John Tearpock" Margin="56,88,51,395" VerticalAlignment="Center" FontSize="24" HorizontalAlignment="Center" Height="41" Width="265" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Button x:Name="But_NewGame" Content="New Game" Margin="116,135,0,0" VerticalAlignment="Top" Height="25" Click="But_NewGame_Click" TabIndex="0" HorizontalAlignment="Left" Width="140" FontSize="16"/>
         <Button x:Name="But_LoadGame" Content="Load Game" Margin="116,166,0,0" VerticalAlignment="Top" Height="25" TabIndex="1" FontSize="16" HorizontalAlignment="Left" Width="140"/>
-        <Label x:Name="Lbl_NumOfPlayers" Content="Number of Players" Margin="96,198,0,0" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="180" FontWeight="Bold"/>
+        <Label x:Name="Lbl_NumOfPlayers" Content="Players" Margin="96,198,0,0" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="180" FontWeight="Bold"/>
         <ListBox x:Name="ListBox_NumOfPlayers" Height="87" Margin="130,231,0,0" VerticalAlignment="Top" SelectionChanged="listBox_SelectionChanged" BorderBrush="#FF84858B" HorizontalAlignment="Left" Width="112">
             <ListBoxItem Content="Two" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="2" FontSize="16" TabIndex="2" IsSelected="True"/>
             <ListBoxItem Content="Three" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="3" FontSize="16" TabIndex="3"/>
             <ListBoxItem Content="Four" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="4" FontSize="16" TabIndex="4"/>
         </ListBox>
-        <Label x:Name="Lbl_NumOfComputers" Content="Number of Computers" Margin="96,325,0,0" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="180" FontWeight="Bold"/>
+        <Label x:Name="Lbl_NumOfComputers" Content="Computers" Margin="96,325,0,0" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="180" FontWeight="Bold"/>
         <ListBox x:Name="ListBox_NumOfComputers" HorizontalAlignment="Left" Height="108" Margin="130,379,0,0" VerticalAlignment="Top" Width="112" SelectionChanged="listBox_SelectionChanged" BorderBrush="#FF84858B" Visibility="Hidden">
             <ListBoxItem Content="One" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="1" FontSize="16" TabIndex="5"/>
             <ListBoxItem Content="Two" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="2" FontSize="16" TabIndex="6"/>
