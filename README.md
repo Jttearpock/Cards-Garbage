@@ -2,11 +2,12 @@
 A working program to play the card game Garbage (AKA Trash).
 
 ## About
-I created this program as an item to showcase in my portfolio. It allows up to 4 players to play a game of Garbage (Also known as Trash). However this is still a work in progress and is not complete at this time. Currently, to the extent of my knowledge, a full game can be played but there are no AI opponents and no message announcing a winner. 
+I created this program as an item to showcase in my portfolio. It allows up to 4 players to play a game of Garbage (Also known as Trash). However this is still a work in progress and is not complete at this time. Currently a full game can be played. The AI is implemented but has some hiccups when taking their turns and sometimes requires user intervention to continue although to my knowledge these issues are not game-breaking. Note: The AI's turn speed is also very quick for testing purposes at the moment.
 
 ## How to Play
 The basic rules to play can be found [here](https://www.wikihow.com/Play-Trash#Playing_Your_Turn).
 The only differences here being there are no Jokers and currently the game is limited to 4 players.
+You can either Drag and Drop the card you draw or double click it to auto-move it (some issues with Kings currently exist).
 
 ## Comments
 Since this is a portfolio piece and I'm always looking to learn more, any feedback is appreciated. Specifically in terms of code although a note or two towards the visuals probably couldn't hurt. It should also be noted that I did not create the game of Garbage or several of the images and any rights go to the respective owners. 
