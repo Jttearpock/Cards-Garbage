@@ -41,16 +41,16 @@
             <Image x:Name="Img_CardEight" Source="Images/BackSide_One_Edited.png" Margin="335,245,0,0" Width="161" Height="240" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True" Drop="Card_Drop" Tag="8"/>
             <Image x:Name="Img_CardNine" Source="Images/BackSide_One_Edited.png" Margin="503,245,0,0" Width="161" Height="240" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True" Drop="Card_Drop" Tag="9"/>
             <Image x:Name="Img_CardTen" Source="Images/BackSide_One_Edited.png" Margin="671,245,0,0" Width="161" Height="240" HorizontalAlignment="Left" VerticalAlignment="Top" AllowDrop="True" Drop="Card_Drop" Tag="10"/>
-            <Label x:Name="Lbl_CardAce" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,2,0,0" Height="223" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="1"/>
-            <Label x:Name="Lbl_CardTwo" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,2,0,0" Height="216" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="2"/>
-            <Label x:Name="Lbl_CardThree" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="351,4,0,0" Height="215" Width="137" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="3"/>
-            <Label x:Name="Lbl_CardFour" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="514,4,0,0" Height="215" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="4"/>
-            <Label x:Name="Lbl_CardFive" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="686,6,0,0" Height="215" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="5"/>
-            <Label x:Name="Lbl_CardSix" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,245,0,0" Height="217" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="6"/>
-            <Label x:Name="Lbl_CardSeven" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="182,253,0,0" Height="217" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="7"/>
-            <Label x:Name="Lbl_CardEight" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="347,253,0,0" Height="216" Width="136" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="8"/>
-            <Label x:Name="Lbl_CardNine" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="517,253,0,0" Height="217" Width="134" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="9"/>
-            <Label x:Name="Lbl_CardTen" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="667,252,0,0" Height="217" Width="157" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Padding="-25,5,5,5" Opacity="0.6" IsHitTestVisible="False" Tag="10"/>
+            <Label x:Name="Lbl_CardAce" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,2,0,0" Height="223" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="1" d:IsLocked="True"/>
+            <Label x:Name="Lbl_CardTwo" Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,2,0,0" Height="216" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="2" d:IsLocked="True"/>
+            <Label x:Name="Lbl_CardThree" Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="351,4,0,0" Height="215" Width="137" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="3" d:IsLocked="True"/>
+            <Label x:Name="Lbl_CardFour" Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="514,4,0,0" Height="215" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="4" d:IsLocked="True"/>
+            <Label x:Name="Lbl_CardFive" Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="686,6,0,0" Height="215" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="5" d:IsLocked="True"/>
+            <Label x:Name="Lbl_CardSix" Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,245,0,0" Height="217" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="6" d:IsLocked="True"/>
+            <Label x:Name="Lbl_CardSeven" Content="7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="182,253,0,0" Height="217" Width="135" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="7" d:IsLocked="True"/>
+            <Label x:Name="Lbl_CardEight" Content="8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="347,253,0,0" Height="216" Width="136" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="8" d:IsLocked="True"/>
+            <Label x:Name="Lbl_CardNine" Content="9" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="517,253,0,0" Height="217" Width="134" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Opacity="0.6" IsHitTestVisible="False" Tag="9" d:IsLocked="True"/>
+            <Label x:Name="Lbl_CardTen" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="667,252,0,0" Height="217" Width="157" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="120" Background="{x:Null}" Padding="-25,5,5,5" Opacity="0.6" IsHitTestVisible="False" Tag="10" d:IsLocked="True"/>
         </Grid>
         <Button x:Name="Btn_ExitGame" Content="Exit Game" HorizontalAlignment="Left" Margin="1118,772,0,0" VerticalAlignment="Top" Width="100" Background="White" Height="23" FontSize="14" Click="Btn_ExitGame_Click"/>
         <Button x:Name="Btn_MainMenu" Content="Main Menu" HorizontalAlignment="Left" Margin="1118,744,0,0" VerticalAlignment="Top" Width="100" Background="White" Height="24" FontSize="14" Click="Btn_MainMenu_Click"/>
@@ -237,9 +237,9 @@
                 <RowDefinition Height="203*"/>
                 <RowDefinition Height="22*"/>
             </Grid.RowDefinitions>
-            <Border x:Name="Deck" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="174" Margin="0,31,0,0" VerticalAlignment="Top" Width="256" CornerRadius="7" Background="#02FFFFFF" Cursor="Hand"/>
-            <Label x:Name="Lbl_Deck" Content="Deck" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="48" Opacity="0.6" IsHitTestVisible="False" Margin="2,32,0,0" Height="172" VerticalAlignment="Top" HorizontalAlignment="Left" Width="253"/>
-            <Image x:Name="Img_Deck_0" Source="Images/BackSide_One_Edited.png" Margin="46,1,0,0" Width="161" Height="240" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Border x:Name="Deck" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="174" Margin="0,31,0,0" VerticalAlignment="Top" Width="256" CornerRadius="7" Background="#02FFFFFF" Cursor="Hand" d:IsLocked="True"/>
+            <Label x:Name="Lbl_Deck" Content="Deck" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="48" Opacity="0.6" IsHitTestVisible="False" Margin="2,32,0,0" Height="172" VerticalAlignment="Top" HorizontalAlignment="Left" Width="253" d:IsLocked="True"/>
+            <Image x:Name="Img_Deck_0" Source="Images/BackSide_One_Edited.png" Margin="46,1,0,0" Width="161" Height="240" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top" d:IsLocked="True">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -249,7 +249,7 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image x:Name="Img_Deck_1" Source="Images/BackSide_One_Edited.png" Margin="47,-1,0,0" Width="161" Height="240" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Image x:Name="Img_Deck_1" Source="Images/BackSide_One_Edited.png" Margin="47,-1,0,0" Width="161" Height="240" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top" d:IsLocked="True">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -349,7 +349,7 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image x:Name="Img_Deck_11" Source="Images/BackSide_One_Edited.png" Margin="56,-17,0,0" Width="161" Height="240" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top" d:IsLocked="True">
+            <Image x:Name="Img_Deck_11" Source="Images/BackSide_One_Edited.png" Margin="56,-17,0,0" Width="161" Height="240" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -359,7 +359,7 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Button x:Name="Btn_Deck" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="256" Background="#02FFFFFF" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="174" Click="Btn_Deck_Click" Margin="0,31,0,0" Focusable="False" Style="{StaticResource MyButton}" d:IsLocked="True" />
+            <Button x:Name="Btn_Deck" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="256" Background="#02FFFFFF" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="174" Click="Btn_Deck_Click" Margin="0,31,0,0" Focusable="False" Style="{StaticResource MyButton}" />
         </Grid>
 
         <Grid x:Name="Grid_Discard" Margin="731,32,0,0" HorizontalAlignment="Left" Width="265" Height="195" VerticalAlignment="Top">

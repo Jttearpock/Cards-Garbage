@@ -57,11 +57,11 @@ namespace Garbage
             this.playersList = new List<Player>();
             this.SetDecks();
 
-            // TODO Check if computer
-            // Add appropriate number of players
+            // Add appropriate number of players & computers
             for (int i = 0; i < numOfPlayers; i++)
-            {
-                Player player = new Player(10, this.playerTurn[i]);
+            {               
+                bool isAi = false || (numOfComputers >= (numOfPlayers - i));
+                Player player = new Player(10, this.playerTurn[i], isAi);
                 this.PlayersList.Add(player);
             }
         }

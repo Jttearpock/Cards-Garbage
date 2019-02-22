@@ -2,6 +2,8 @@
 //     Created by John Tearpock
 // </copyright>
 
+using System.Threading.Tasks;
+
 namespace Garbage
 {
     using System;
@@ -100,16 +102,22 @@ namespace Garbage
         /// </summary>
         /// <param name="sender">The sender of the event</param>
         /// <param name="e">The routed event</param>
-        private void Btn_Deck_Click(object sender, RoutedEventArgs e)
+        private async void Btn_Deck_Click(object sender, RoutedEventArgs e)
         {
             if (LogicalTreeHelper.FindLogicalNode(this.Grid_GameBoard, "Current_Card") == null)
             {
                 Image newCard = this.RandomCard();
                 this.Grid_GameBoard.Children.Add(newCard);
                 this.UpdateDeckPile();
+
+                // Delay adding the double click to avoid player accidentally triggering it when drawing a card
+                Image currentCard = LogicalTreeHelper.FindLogicalNode(Grid_GameBoard, "Current_Card") as Image;
+                await Task.Delay(100);
+                currentCard.MouseDown += this.Current_Card_DoubleClick;
             }
         }
 
+        // TODO Alter click to trigger second method that can be run independently
         /// <summary>
         /// Button Click to draw a card from the Discard
         /// </summary>
@@ -124,16 +132,23 @@ namespace Garbage
                 string[] num = Img_Discard_0.Source.ToString().Split('-', '.');
                 Player currentPlayer = this.currentGame.PlayersList[this.currentGame.PlayerTurnCounter - 1];
                 Image[] images = currentPlayer.ScoreArray;
-
                 bool allowDraw = true;
+
+                // If King always allow the Draw               
                 if (num[1] != "King")
                 {
+                    // If not king, check all cards player currently has
                     foreach (var i in images)
                     {
-                        if ((i != null && i.Source.ToString().Contains(num[1])) || !currentPlayer.CardsNeededArray.Contains(num[1]))
+                        // If position is empty, allow draw.
+                        if (i != null)
                         {
-                            allowDraw = false;
-                            break;
+                            // If card is not needed or already collected do not allow draw
+                            if (!currentPlayer.CardsNeededArray.Contains(num[1]) || i.Source.ToString().Contains(num[1]))
+                            {
+                                allowDraw = false;
+                                break;
+                            }
                         }
                     }
                 }
@@ -151,6 +166,7 @@ namespace Garbage
                     newCard.Cursor = Cursors.Hand;
                     newCard.PreviewMouseLeftButtonDown += this.Card_PreviewMouseLeftButtonDown;
                     newCard.PreviewMouseMove += this.Card_PreviewMouseMove;
+                    newCard.MouseDown += this.Current_Card_DoubleClick;
 
                     // Count cards in the Discard pile and remove the top card
                     int discardCount = this.currentGame.DiscardPile.Count;
@@ -187,7 +203,152 @@ namespace Garbage
         }
 
         /// <summary>
-        /// Button Down event TODO Make card move visually on Drag
+        /// Handles the double click on the current card and triggers the method to move it
+        /// </summary>
+        /// <param name="sender">The sender of the event</param>
+        /// <param name="e">The routed event</param>
+        private void Current_Card_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && e.ClickCount == 2)
+            {
+                Image currentCard = sender as Image;
+                MoveCard(currentCard);
+            }
+        }
+        
+        // TODO trash king if cards full
+        /// <summary>
+        /// Moves the card automatically based on player needs
+        /// </summary>
+        /// <param name="sender">The sender of the event</param>
+        /// <param name="e">The routed event</param>
+        private void MoveCard(Image currentCard)
+        {
+            if (this.currentGame.RemainingDeck.Count == 0)
+            {
+                this.currentGame.ShuffleDeck();
+                this.UpdateDeckPile();
+            }
+
+            string[] cardSource = currentCard.Source.ToString().Split('/', '.', '-');
+            string cardName;
+            if (cardSource.Length >= 6)
+            {
+                cardName = cardSource[5];
+            }
+            else
+            {
+                cardName = cardSource[3];
+            }
+
+            IEnumerable<Image> cards = Grid_Cards.Children.OfType<Image>();
+            List<Player> players = this.currentGame.PlayersList;
+            Player currentPlayer = players[this.currentGame.PlayerTurnCounter - 1];
+
+            // If the current card is numbered
+            if (cardName != "King")
+            {
+                // If the player needs the current card; also filters Jacks and Queens
+                if (currentPlayer.CardsNeededArray.Contains(cardName))
+                {
+                    int x = 0;
+                    foreach (var c in cards)
+                    {
+                        // Find the correct spot for the card, check if it has that number in position
+                        if (c.Name.Contains(cardName) && !(c.Source.ToString().Contains(cardName)))
+                        {
+                            // If position is currently filled with a king
+                            if (c.Source.ToString().Contains("King"))
+                            {
+                                // Create temporary Image to hold the King 
+                                Image kingCard = new Image();
+                                kingCard.Source = c.Source;
+
+                                // Replace King on Board with currentCard
+                                c.Source = currentCard.Source;
+                                c.UpdateLayout();
+
+                                // Add card to ScoreArray for the current Player
+                                Image tempImage = new Image();
+                                tempImage.Source = c.Source;
+                                currentPlayer.ScoreArray[x] = tempImage;
+
+                                // Set the currentCard to be the King
+                                currentCard.Source = kingCard.Source;
+                                currentCard.UpdateLayout();
+                                break;
+                            }
+                            else
+                            {
+
+                                // Replace empty position with the currentCard
+                                c.Source = currentCard.Source;
+                                c.UpdateLayout();
+
+                                // Add card to ScoreArray for the current Player
+                                Image tempImage = new Image();
+                                tempImage.Source = c.Source;
+                                currentPlayer.ScoreArray[x] = tempImage;
+
+                                // "Flip up" the face down card with a new random card
+                                currentCard = this.RandomCard();
+                                currentCard.MouseDown += this.Current_Card_DoubleClick;
+                                Grid_GameBoard.Children.Add(currentCard);
+                                currentCard.UpdateLayout();
+                                break;
+                            }
+
+                        }
+
+                        // If position is already filled, add to discard.
+                        if (c.Name.Contains(cardName) && c.Source.ToString().Contains(cardName))
+                        {
+                            this.DiscardPile();
+                            break;
+                        }
+
+                        x++;
+                    }
+                }
+                else
+                {
+                    this.DiscardPile();
+                }
+            }
+            else
+            {
+                int x = 0;
+                foreach (var c in cards)
+                {
+                    if (c.Source.ToString().Contains("BackSide") && c.Visibility == Visibility.Visible)
+                    {
+                        // Replace first empty position with the King
+                        c.Source = currentCard.Source;
+                        c.UpdateLayout();
+
+                        // Add card to ScoreArray for the current Player
+                        Image tempImage = new Image();
+                        tempImage.Source = c.Source;
+                        currentPlayer.ScoreArray[x] = tempImage;
+
+                        // "Flip up" the face down card with a new random card
+                        currentCard = this.RandomCard();
+                        currentCard.MouseDown += this.Current_Card_DoubleClick;
+                        Grid_GameBoard.Children.Add(currentCard);
+                        currentCard.UpdateLayout();
+                        break;
+                    }
+                    x++;
+                }
+            }
+
+            this.CardLabelVisibility();
+            currentPlayer.UpdateScore(this.Grid_GameBoard);
+        }
+
+        // TODO Make card move visually on Drag
+        /// <summary>
+        /// Button Down event
         /// </summary>
         /// <param name="sender">The sender of the event</param>
         /// <param name="e">The routed event</param>
@@ -219,7 +380,7 @@ namespace Garbage
         }
 
         /// <summary>
-        /// Card drop event handler TODO Check on Drop if winning card
+        /// Card drop event handler
         /// </summary>
         /// <param name="sender">The sender of the event</param>
         /// <param name="e">The routed event</param>
@@ -251,6 +412,7 @@ namespace Garbage
                         {
                             if (currentCard.Source.ToString().Contains(n))
                             {
+                                // If the current position is filled with a King
                                 if (positionCard.Source.ToString().Contains("King"))
                                 {
                                     // Create temporary Image to hold the King 
@@ -310,6 +472,24 @@ namespace Garbage
                         currentCard.UpdateLayout();
                     }
                 }
+
+                Image drawnCard = LogicalTreeHelper.FindLogicalNode(Grid_GameBoard, "Current_Card") as Image;
+                drawnCard.MouseDown += this.Current_Card_DoubleClick;
+
+                // Check if game is over after the player places a card
+                if (currentPlayer.CheckGameOver())
+                {
+                    this.Grid_GameBoard.Children.Remove(drawnCard);
+                    this.CardLabelVisibility();
+                    currentPlayer.UpdateScore(this.Grid_GameBoard);
+
+                    if (MessageBox.Show("Player " + currentPlayer.PlayerName + " wins!", "Confirm", MessageBoxButton.OK) == MessageBoxResult.OK)
+                    {
+                        this.mainMenu = new MainWindow();
+                        this.mainMenu.Show();
+                        GameWindow.Close();
+                    }
+                }
             }
             else
             {
@@ -317,17 +497,7 @@ namespace Garbage
             }
 
             this.CardLabelVisibility();
-            bool gameOver = currentPlayer.CheckGameOver();
-
-            if (gameOver == true)
-            {
-                if (MessageBox.Show("Player " + currentPlayer.PlayerName + " wins!", "Confirm", MessageBoxButton.OK) == MessageBoxResult.OK)
-                {
-                    this.mainMenu = new MainWindow();
-                    this.mainMenu.Show();
-                    GameWindow.Close();
-                }
-            }
+            currentPlayer.UpdateScore(this.Grid_GameBoard);
         }
 
         /// <summary>
@@ -336,6 +506,7 @@ namespace Garbage
         /// <returns>Image of card that was drawn</returns>
         private Image RandomCard()
         {
+            // If there's a card already drawn, remove it.
             if (LogicalTreeHelper.FindLogicalNode(this.Grid_GameBoard, "Current_Card") != null)
             {
                 Image currentCard = LogicalTreeHelper.FindLogicalNode(this.Grid_GameBoard, "Current_Card") as Image;
@@ -411,6 +582,83 @@ namespace Garbage
             }
         }
 
+        // TODO Check if top item in Discard is needed for Ai
+        // TODO Add Delays and visual cues
+        /// <summary>
+        /// Check if current player is Ai and take turn
+        /// </summary>
+        private async void CheckAiTurn()
+        {
+            Player currentPlayer = this.currentGame.PlayersList[this.currentGame.PlayerTurnCounter - 1];
+
+            // If player is Ai
+            if (currentPlayer.IsAi)
+            {
+
+                // Remove all Click events TODO remove drag once trash works properly for King
+                Btn_Deck.Click -= Btn_Deck_Click;
+                Btn_Discard.Click -= Btn_Discard_Click;
+
+                Image currentCard = LogicalTreeHelper.FindLogicalNode(Grid_GameBoard, "Current_Card") as Image;
+
+                // If no card is currently drawn, draw new card
+                if (currentCard == null)
+                {
+                    await Task.Delay(100); // 600
+                    Image newCard = this.RandomCard();
+                    this.Grid_GameBoard.Children.Add(newCard);
+                    this.UpdateDeckPile();
+                    // Select the new card
+                    currentCard = LogicalTreeHelper.FindLogicalNode(Grid_GameBoard, "Current_Card") as Image;
+                }
+
+
+                // Take turn and move card
+                await Task.Delay(100); // 1250
+                MoveCard(currentCard);
+
+                // Find if a new card was flipped up and remove click event if yes
+                currentCard = LogicalTreeHelper.FindLogicalNode(Grid_GameBoard, "Current_Card") as Image;
+                if (currentCard != null)
+                {
+                    currentCard.MouseDown -= Current_Card_DoubleClick;
+                }
+
+                // Check if game is over after a card is placed
+                if (currentPlayer.CheckGameOver())
+                {
+                    this.Grid_GameBoard.Children.Remove(currentCard);
+                    this.CardLabelVisibility();
+                    currentPlayer.UpdateScore(this.Grid_GameBoard);
+
+                    if (MessageBox.Show("Player " + currentPlayer.PlayerName + " wins!", "Confirm", MessageBoxButton.OK) == MessageBoxResult.OK)
+                    {
+                        this.mainMenu = new MainWindow();
+                        this.mainMenu.Show();
+                        GameWindow.Close();
+                    }
+                }
+                else
+                {
+                    // Check if MoveCard() Ended in discard and switched to a new player
+                    // If it is the same player's turn and the game is not over, run the AI move again.
+                    Player newPlayer = this.currentGame.PlayersList[this.currentGame.PlayerTurnCounter - 1];
+                    if (currentPlayer == newPlayer)
+                    {
+                        this.CheckAiTurn();
+                    }
+                }
+
+
+            }
+            else
+            {
+                // Re-add Click events
+                Btn_Deck.Click += Btn_Deck_Click;
+                Btn_Discard.Click += Btn_Discard_Click;
+            }
+        }
+
         /// <summary>
         /// Adds a card to the the Discard Pile and triggers the end of the turn
         /// </summary>
@@ -419,7 +667,16 @@ namespace Garbage
             // Take the currentCard and add it to the DiscardPile List
             Image currentCard = LogicalTreeHelper.FindLogicalNode(Grid_GameBoard, "Current_Card") as Image;
             string[] cardName = currentCard.Source.ToString().Split('/');
-            this.currentGame.DiscardPile.Add(cardName[4]);
+
+            if (cardName.Length == 5)
+            {
+                this.currentGame.DiscardPile.Add(cardName[4]);
+            }
+            else
+            {
+                this.currentGame.DiscardPile.Add(cardName[2]);
+            }
+
 
             // If Deck is empty, shuffle Discard back into Deck
             if (this.currentGame.RemainingDeck.Count == 0)
@@ -432,6 +689,10 @@ namespace Garbage
             this.UpdateDeckPile();
             this.UpdateDiscardPile(currentCard);
             this.Grid_GameBoard.Children.Remove(currentCard);
+            this.CardLabelVisibility();
+
+            // Check if it's an Ai Turn
+            this.CheckAiTurn();
         }
 
         /// <summary>
@@ -568,7 +829,7 @@ namespace Garbage
             // Update board visuals for new player    
             this.UpdateLabels();
 
-            // Change cards to reflect the cards already collected by the player
+            // Change cards on the board to reflect the cards already collected by the player
             IEnumerable<Image> images = Grid_Cards.Children.OfType<Image>();
             int x = 0;
             foreach (var i in images)

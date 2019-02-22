@@ -29,6 +29,8 @@ namespace Garbage
         {
             int numOfPlayers = 2;
             int numOfComputers = 0;
+
+            // Loop through each selection in in the Players ListBox
             foreach (var i in ListBox_NumOfPlayers.Items)
             {
                 ListBoxItem currentItem = i as ListBoxItem;
@@ -41,6 +43,7 @@ namespace Garbage
 
             if (Cb_EnableComputer.IsChecked == true)
             {
+                // Loop through each selection in in the Computers ListBox
                 foreach (var i in ListBox_NumOfComputers.Items)
                 {
                     ListBoxItem currentItem = i as ListBoxItem;
