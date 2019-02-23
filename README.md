@@ -2,7 +2,7 @@
 A working program to play the card game Garbage (AKA Trash).
 
 ## About
-I created this program as an item to showcase in my portfolio. It allows up to 4 players to play a game of Garbage (Also known as Trash). Currently a full game can be played and to the extent of my knowledge the AI works fully. While I don't think I'm 100% done with this project, most of the remaining changes that I am aiming for or am considering making to the game fall more on the visual side than the technical side. 
+I created this program as an item to showcase in my portfolio. It allows up to 4 players to play a game of Garbage (Also known as Trash). Currently a full game can be played and to the extent of my knowledge the AI works fully. While I am not 100% done with this project, most of the remaining changes that I am aiming for or am considering making to the game fall more on the visual side than the technical side with the exception of wanting to add Save/Load functionality being the last big piece.  
 
 ## How to Play
 The basic rules to play can be found [here](https://www.wikihow.com/Play-Trash#Playing_Your_Turn).
