@@ -65,6 +65,7 @@ namespace Garbage
             }
 
             this.UpdateLabels();
+            this.CheckAiTurn();
         }
 
         /// <summary>
@@ -117,13 +118,20 @@ namespace Garbage
             }
         }
 
-        // TODO Alter click to trigger second method that can be run independently
         /// <summary>
-        /// Button Click to draw a card from the Discard
+        /// Button Click trigger a draw a card from the Discard
         /// </summary>
         /// <param name="sender">The sender of the event</param>
         /// <param name="e">The routed event</param>
         private void Btn_Discard_Click(object sender, RoutedEventArgs e)
+        {
+            DrawDiscard();
+        }
+
+        /// <summary>
+        /// The method that checks and processes drawing from the discard pile
+        /// </summary>
+        private void DrawDiscard()
         {
             // Check if the player hasn't already drawn a card, there is at least one card in the discard, and the top card was the most recent discard
             if (LogicalTreeHelper.FindLogicalNode(this.Grid_GameBoard, "Current_Card") == null && this.currentGame.DiscardPile.Count > 0 && !Img_Discard_0.Source.ToString().Contains("BackSide"))
@@ -137,20 +145,30 @@ namespace Garbage
                 // If King always allow the Draw               
                 if (num[1] != "King")
                 {
-                    // If not king, check all cards player currently has
-                    foreach (var i in images)
+                    // If card is not needed do not allow draw
+                    if (!currentPlayer.CardsNeededArray.Contains(num[1]))
                     {
-                        // If position is empty, allow draw.
-                        if (i != null)
+                        allowDraw = false;
+                    }
+                    else
+                    {
+                        // If not king, check all cards player currently has
+                        foreach (var i in images)
                         {
-                            // If card is not needed or already collected do not allow draw
-                            if (!currentPlayer.CardsNeededArray.Contains(num[1]) || i.Source.ToString().Contains(num[1]))
+                            // If position is empty allow draw
+                            if (i != null)
                             {
-                                allowDraw = false;
-                                break;
+                                // If card is already collected, do not allow draw
+                                if (i.Source.ToString().Contains(num[1]))
+                                {
+                                    allowDraw = false;
+                                    break;
+                                }
                             }
+
                         }
                     }
+
                 }
 
                 // Don't allow player to pick up Jack or Queen from Discard
@@ -215,8 +233,7 @@ namespace Garbage
                 MoveCard(currentCard);
             }
         }
-        
-        // TODO trash king if cards full
+
         /// <summary>
         /// Moves the card automatically based on player needs
         /// </summary>
@@ -318,10 +335,12 @@ namespace Garbage
             else
             {
                 int x = 0;
+                bool trash = true;
                 foreach (var c in cards)
                 {
                     if (c.Source.ToString().Contains("BackSide") && c.Visibility == Visibility.Visible)
                     {
+                        trash = false;
                         // Replace first empty position with the King
                         c.Source = currentCard.Source;
                         c.UpdateLayout();
@@ -339,6 +358,12 @@ namespace Garbage
                         break;
                     }
                     x++;
+                }
+
+                // If valid position was not found, discard King
+                if (trash == true)
+                {
+                    this.DiscardPile();
                 }
             }
 
@@ -582,7 +607,6 @@ namespace Garbage
             }
         }
 
-        // TODO Check if top item in Discard is needed for Ai
         // TODO Add Delays and visual cues
         /// <summary>
         /// Check if current player is Ai and take turn
@@ -595,33 +619,46 @@ namespace Garbage
             if (currentPlayer.IsAi)
             {
 
-                // Remove all Click events TODO remove drag once trash works properly for King
+                // Remove all Click events
                 Btn_Deck.Click -= Btn_Deck_Click;
                 Btn_Discard.Click -= Btn_Discard_Click;
+
+                await Task.Delay(600); // 600
+                DrawDiscard();
 
                 Image currentCard = LogicalTreeHelper.FindLogicalNode(Grid_GameBoard, "Current_Card") as Image;
 
                 // If no card is currently drawn, draw new card
                 if (currentCard == null)
                 {
-                    await Task.Delay(100); // 600
                     Image newCard = this.RandomCard();
                     this.Grid_GameBoard.Children.Add(newCard);
                     this.UpdateDeckPile();
                     // Select the new card
                     currentCard = LogicalTreeHelper.FindLogicalNode(Grid_GameBoard, "Current_Card") as Image;
+                    currentCard.PreviewMouseLeftButtonDown -= Card_PreviewMouseLeftButtonDown;
+                    currentCard.PreviewMouseMove -= Card_PreviewMouseMove;
+                }
+                else
+                {
+                    // If card is drawn remove user input events
+                    currentCard.MouseDown -= Current_Card_DoubleClick;
+                    currentCard.PreviewMouseLeftButtonDown -= Card_PreviewMouseLeftButtonDown;
+                    currentCard.PreviewMouseMove -= Card_PreviewMouseMove;
                 }
 
 
                 // Take turn and move card
-                await Task.Delay(100); // 1250
+                await Task.Delay(1000); // 1250
                 MoveCard(currentCard);
 
-                // Find if a new card was flipped up and remove click event if yes
+                // Find if there is a card drawn and remove click/drag events if yes
                 currentCard = LogicalTreeHelper.FindLogicalNode(Grid_GameBoard, "Current_Card") as Image;
                 if (currentCard != null)
                 {
                     currentCard.MouseDown -= Current_Card_DoubleClick;
+                    currentCard.PreviewMouseLeftButtonDown -= Card_PreviewMouseLeftButtonDown;
+                    currentCard.PreviewMouseMove -= Card_PreviewMouseMove;
                 }
 
                 // Check if game is over after a card is placed
