@@ -29,6 +29,7 @@ namespace Garbage
         {
             int numOfPlayers = 2;
             int numOfComputers = 0;
+            int startingCards = 10;
 
             // Loop through each selection in in the Players ListBox
             foreach (var i in ListBox_NumOfPlayers.Items)
@@ -55,7 +56,12 @@ namespace Garbage
                 }
             }
 
-            ActiveGameState currentGame = new ActiveGameState(numOfPlayers, numOfComputers);
+            if (Cb_ShortGame.IsChecked == true)
+            {
+                startingCards = 6;
+            }
+
+            ActiveGameState currentGame = new ActiveGameState(numOfPlayers, numOfComputers, startingCards);
             GameBoard gameBoard = new GameBoard(currentGame);
             gameBoard.Show();
             this.MainMenuWindow.Close();

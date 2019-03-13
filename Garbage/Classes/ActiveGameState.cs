@@ -48,7 +48,7 @@ namespace Garbage
         /// </summary>
         /// <param name="numOfPlayers">Number of Players in the game</param>
         /// <param name="numOfComputers">Number of Computers in the game</param>
-        public ActiveGameState(int numOfPlayers, int numOfComputers)
+        public ActiveGameState(int numOfPlayers, int numOfComputers, int startingCards)
         {
             this.playerTurnCounter = 1;
             this.startingDeck = new List<string>();
@@ -61,7 +61,7 @@ namespace Garbage
             for (int i = 0; i < numOfPlayers; i++)
             {               
                 bool isAi = false || (numOfComputers >= (numOfPlayers - i));
-                Player player = new Player(10, this.playerTurn[i], isAi);
+                Player player = new Player(startingCards, this.playerTurn[i], isAi);
                 this.PlayersList.Add(player);
             }
         }

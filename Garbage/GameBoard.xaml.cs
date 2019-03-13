@@ -64,6 +64,12 @@ namespace Garbage
                 Grid_PlayerFourScore.Visibility = Visibility.Visible;
             }
 
+            foreach (var p in currentGame.PlayersList)
+            {
+                p.UpdateScore(this.Grid_GameBoard);
+            }
+
+            this.CardLabelVisibility();
             this.UpdateLabels();
             this.CheckAiTurn();
         }

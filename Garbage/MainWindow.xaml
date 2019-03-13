@@ -5,25 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Garbage"
         mc:Ignorable="d"
-        Title="Menu" Height="558.521" Width="387" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-    <Grid x:Name="Grid_MainMenu">
-        <Label x:Name="Lbl_GameTitle" Content="Garbage" Margin="0,-5,51,427" VerticalAlignment="Center" FontSize="60" FontFamily="Comic Sans MS" HorizontalAlignment="Right" Height="102" Width="265" Background="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Label x:Name="Lbl_Name" Content="By: John Tearpock" Margin="56,88,51,395" VerticalAlignment="Center" FontSize="24" HorizontalAlignment="Center" Height="41" Width="265" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button x:Name="But_NewGame" Content="New Game" Margin="116,135,0,0" VerticalAlignment="Top" Height="25" Click="But_NewGame_Click" TabIndex="0" HorizontalAlignment="Left" Width="140" FontSize="16"/>
-        <Button x:Name="But_LoadGame" Content="Load Game" Margin="116,166,0,0" VerticalAlignment="Top" Height="25" TabIndex="1" FontSize="16" HorizontalAlignment="Left" Width="140"/>
-        <Label x:Name="Lbl_NumOfPlayers" Content="Players" Margin="96,198,0,0" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="180" FontWeight="Bold"/>
-        <ListBox x:Name="ListBox_NumOfPlayers" Height="87" Margin="130,231,0,0" VerticalAlignment="Top" SelectionChanged="listBox_SelectionChanged" BorderBrush="#FF84858B" HorizontalAlignment="Left" Width="112">
+        Title="Menu" Height="568.521" Width="387" ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize">
+    <Grid x:Name="Grid_MainMenu" Height="540" VerticalAlignment="Top" HorizontalAlignment="Left" Width="387" Margin="0,0,-6,0">
+        <Label x:Name="Lbl_GameTitle" Content="Garbage" Margin="63,-3,0,0" FontSize="60" FontFamily="Comic Sans MS" Background="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Width="265" Height="102" VerticalAlignment="Top"/>
+        <Label x:Name="Lbl_Name" Content="By: John Tearpock" Margin="60,90,0,0" FontSize="24" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="264" Height="41" VerticalAlignment="Top"/>
+        <Button x:Name="But_NewGame" Content="New Game" Margin="116,135,0,0" Click="But_NewGame_Click" TabIndex="0" FontSize="16" HorizontalAlignment="Left" Width="140" Height="25" VerticalAlignment="Top"/>
+        <Button x:Name="But_LoadGame" Content="Load Game" Margin="116,166,0,0" TabIndex="1" FontSize="16" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140"/>
+        <Label x:Name="Lbl_NumOfPlayers" Content="Players" Margin="97,215,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" Height="33" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
+        <ListBox x:Name="ListBox_NumOfPlayers" Margin="131,248,0,0" SelectionChanged="listBox_SelectionChanged" BorderBrush="#FF84858B" HorizontalAlignment="Left" Width="112" Height="87" VerticalAlignment="Top">
             <ListBoxItem Content="Two" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="2" FontSize="16" TabIndex="2" IsSelected="True"/>
             <ListBoxItem Content="Three" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="3" FontSize="16" TabIndex="3"/>
             <ListBoxItem Content="Four" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="4" FontSize="16" TabIndex="4"/>
         </ListBox>
-        <Label x:Name="Lbl_NumOfComputers" Content="Computers" Margin="96,325,0,0" Height="33" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Width="180" FontWeight="Bold"/>
-        <ListBox x:Name="ListBox_NumOfComputers" HorizontalAlignment="Left" Height="108" Margin="130,379,0,0" VerticalAlignment="Top" Width="112" SelectionChanged="listBox_SelectionChanged" BorderBrush="#FF84858B" Visibility="Hidden">
+        <Label x:Name="Lbl_NumOfComputers" Content="Computers" Margin="97,342,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Width="180" Height="33" VerticalAlignment="Top"/>
+        <ListBox x:Name="ListBox_NumOfComputers" Margin="131,396,0,0" SelectionChanged="listBox_SelectionChanged" BorderBrush="#FF84858B" Height="108" VerticalAlignment="Top" HorizontalAlignment="Left" Width="112" Visibility="Hidden">
             <ListBoxItem Content="One" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="1" FontSize="16" TabIndex="5"/>
             <ListBoxItem Content="Two" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="2" FontSize="16" TabIndex="6"/>
             <ListBoxItem Content="Three" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="3" FontSize="16" TabIndex="7"/>
             <ListBoxItem Content="Four" VerticalAlignment="Center" HorizontalContentAlignment="Center" Tag="4" FontSize="16" TabIndex="8"/>
         </ListBox>
-        <CheckBox x:Name="Cb_EnableComputer" Content="Enable AI" HorizontalAlignment="Left" Margin="145,358,0,0" VerticalAlignment="Top" FontSize="14" Width="82" Focusable="False" Checked="Cb_EnableComputer_CheckedChange" Unchecked="Cb_EnableComputer_CheckedChange"/>
+        <CheckBox x:Name="Cb_EnableComputer" Content="Enable AI" Margin="146,375,0,0" FontSize="14" Focusable="False" Checked="Cb_EnableComputer_CheckedChange" Unchecked="Cb_EnableComputer_CheckedChange" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left" Width="82"/>
+        <CheckBox x:Name="Cb_ShortGame" Content="Short Game" Margin="135,199,0,0" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="104" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </Grid>
 </Window>
