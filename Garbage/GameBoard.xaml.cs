@@ -66,6 +66,16 @@ namespace Garbage
 
             foreach (var p in currentGame.PlayersList)
             {
+                if (p.IsAi == true)
+                {
+                    string name = "Lbl_Player" + p.PlayerName + "Score";
+                    Label playerName = FindName(name) as Label;
+                    playerName.Content = "[AI]Player " + p.PlayerName;
+                }
+            }
+
+            foreach (var p in currentGame.PlayersList)
+            {
                 p.UpdateScore(this.Grid_GameBoard);
             }
 
@@ -824,7 +834,15 @@ namespace Garbage
             IEnumerable<Grid> grids = Grid_GameBoard.Children.OfType<Grid>();
 
             // Update board visuals for new player    
-            Lbl_Current_Player.Content = "Player " + currentPlayer.PlayerName + "'s Turn";
+            if (currentPlayer.IsAi == true)
+            {
+                Lbl_Current_Player.Content = "[AI]Player " + currentPlayer.PlayerName + "'s Turn";
+            }
+            else
+            {
+                Lbl_Current_Player.Content = "Player " + currentPlayer.PlayerName + "'s Turn";
+            }
+
 
             foreach (var g in grids)
             {
