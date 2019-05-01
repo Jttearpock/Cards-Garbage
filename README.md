@@ -7,7 +7,7 @@ I created this program as an item to showcase in my portfolio. It allows up to 4
 ## How to Play
 The basic rules to play can be found [here](https://www.wikihow.com/Play-Trash#Playing_Your_Turn).
 The only differences here being there are no Jokers and currently the game is limited to 4 players.
-You can either Drag and Drop the card you draw or double click it to auto-move it (some issues with Kings currently exist).
+You can either Drag and Drop the card you draw or double click it to auto-move it.
 
 ## Comments
 Since this is a portfolio piece and I'm always looking to learn more, any feedback is appreciated. Specifically in terms of code although a note or two towards the visuals probably couldn't hurt. It should also be noted that I did not create the game of Garbage or several of the images and any rights go to the respective owners. 
