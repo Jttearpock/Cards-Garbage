@@ -57,7 +57,7 @@
         <Button x:Name="Btn_SaveGame" Content="Save Game" HorizontalAlignment="Left" Margin="1118,717,0,0" VerticalAlignment="Top" Width="100" Background="White" Height="23" FontSize="14"/>
 
         <Grid x:Name="Grid_PlayerOneScore" Margin="10,154,0,0" Height="161" VerticalAlignment="Top" HorizontalAlignment="Left" Width="212">
-            <Label x:Name="Lbl_PlayerOneScore" Content="Player One" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" Height="30" Width="109" HorizontalContentAlignment="Center" FontSize="14" Background="White" FontWeight="Bold"/>
+            <Label x:Name="Lbl_PlayerOneScore" Content="Player One" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Height="30" Width="150" HorizontalContentAlignment="Center" FontSize="14" Background="White" FontWeight="Bold"/>
             <Image x:Name="Img_P1_One"  Source="Images/BackSide_One_Edited.png" Margin="1,36,153,57" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <Image x:Name="Img_P1_Two"  Source="Images/BackSide_One_Edited.png" Margin="39,35,115,58" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <Image x:Name="Img_P1_Three" Source="Images/BackSide_One_Edited.png" Margin="77,35,77,58" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
@@ -101,7 +101,7 @@
         </Grid>
 
         <Grid x:Name="Grid_PlayerTwoScore" Margin="10,316,0,0" Height="161" VerticalAlignment="Top" HorizontalAlignment="Left" Width="212">
-            <Label x:Name="Lbl_PlayerTwoScore" Content="Player Two" Margin="41,0,38,114" Height="30" Width="109" HorizontalContentAlignment="Center" FontSize="14" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="Lbl_PlayerTwoScore" Content="Player Two" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Height="30" Width="150" HorizontalContentAlignment="Center" FontSize="14" Background="White" FontWeight="Bold"/>
             <Image x:Name="Img_P2_One"  Source="Images/BackSide_One_Edited.png" Margin="1,36,153,57" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <Image x:Name="Img_P2_Two"  Source="Images/BackSide_One_Edited.png" Margin="39,35,115,58" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <Image x:Name="Img_P2_Three" Source="Images/BackSide_One_Edited.png" Margin="77,35,77,58" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
@@ -145,7 +145,7 @@
         </Grid>
 
         <Grid x:Name="Grid_PlayerThreeScore" Margin="10,485,0,0" Height="161" VerticalAlignment="Top" HorizontalAlignment="Left" Width="212" Visibility="Hidden">
-            <Label x:Name="Lbl_PlayerThreeScore" Content="Player Three" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" Height="30" Width="109" HorizontalContentAlignment="Center" FontSize="14" Background="White" FontWeight="Bold"/>
+            <Label x:Name="Lbl_PlayerThreeScore" Content="Player Three" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Height="30" Width="150" HorizontalContentAlignment="Center" FontSize="14" Background="White" FontWeight="Bold"/>
             <Image x:Name="Img_P3_One"  Source="Images/BackSide_One_Edited.png" Margin="1,36,153,57" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <Image x:Name="Img_P3_Two"  Source="Images/BackSide_One_Edited.png" Margin="39,35,115,58" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <Image x:Name="Img_P3_Three" Source="Images/BackSide_One_Edited.png" Margin="77,35,77,58" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
@@ -189,7 +189,7 @@
         </Grid>
 
         <Grid x:Name="Grid_PlayerFourScore" Margin="10,651,0,0" Height="161" VerticalAlignment="Top" HorizontalAlignment="Left" Width="212" Visibility="Hidden">
-            <Label x:Name="Lbl_PlayerFourScore" Content="Player Four" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" Height="30" Width="109" HorizontalContentAlignment="Center" FontSize="14" Background="White" FontWeight="Bold"/>
+            <Label x:Name="Lbl_PlayerFourScore" Content="Player Four" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Height="30" Width="150" HorizontalContentAlignment="Center" FontSize="14" Background="White" FontWeight="Bold"/>
             <Image x:Name="Img_P4_One"  Source="Images/BackSide_One_Edited.png" Margin="1,36,153,57" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <Image x:Name="Img_P4_Two"  Source="Images/BackSide_One_Edited.png" Margin="39,35,115,58" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
             <Image x:Name="Img_P4_Three" Source="Images/BackSide_One_Edited.png" Margin="77,35,77,58" Width="34" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
@@ -437,7 +437,7 @@
             </Image>
             <Button x:Name="Btn_Discard" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Background="#02FFFFFF" Foreground="{x:Null}" BorderBrush="{x:Null}" Height="174" Margin="0,12,-40,-28" Focusable="False" Style="{StaticResource MyButton}" AllowDrop="True" Drop="Card_Drop" Click="Btn_Discard_Click" d:IsLocked="True"/>
         </Grid>
-        <Label x:Name="Lbl_Current_Player" Content="Player One's Turn" HorizontalAlignment="Left" Margin="539,255,0,0" VerticalAlignment="Top" Background="White" Height="46" Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold"/>
+        <Label x:Name="Lbl_Current_Player" Content="Player One's Turn" HorizontalAlignment="Left" Margin="491,255,0,0" VerticalAlignment="Top" Background="White" Height="46" Width="349" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" FontWeight="Bold"/>
         <Label x:Name="Lbl_GameTitle" Content="Garbage" Margin="8,0,1042,0" VerticalAlignment="Top" FontSize="48" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Height="79" Width="196" Background="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label x:Name="Lbl_Name" Content="By: John Tearpock" Margin="8,66,1042,0" VerticalAlignment="Top" FontSize="20" HorizontalAlignment="Center" Height="39" Width="196" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
