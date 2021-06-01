@@ -1,5 +1,5 @@
 # Cards-Garbage
-A working program to play the card game Garbage (AKA Trash).
+A (mostly) working program to play the card game Garbage (AKA Trash). Some minor bugs may be present but the game is playable start to finish.
 
 ## About
 I created this program as an item to showcase in my portfolio. It allows up to 4 players to play a game of Garbage (Also known as Trash). Currently a full game can be played and to the extent of my knowledge the AI works fully. While I am not 100% done with this project, most of the remaining changes that I am aiming for or am considering making to the game fall more on the visual side than the technical side with the exception of wanting to add Save/Load functionality being the last big piece.  
